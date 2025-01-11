@@ -1,17 +1,18 @@
 ```mermaid
 sequenceDiagram
     participant P as printArray
-    participant A as std::array
+    participant N as numbers:std::array
     participant C as std::cout
 
-    P->>+A: create {1, 2, 3, 4, 5}
-    A-->>-P: return array
+    P->>+N: create {1, 2, 3, 4, 5}
+    N-->>-P: return array
 
-    loop For each element in array
-        P->>P: Get next element
+    loop For each num in numbers
+        P->>N: Get next element (num)
+        N-->>P: return num
         P->>+C: << num << " "
         C-->>-P: return
     end
 
-    Note over P: End of function
+    Note over P: End of printArray function
 ```
