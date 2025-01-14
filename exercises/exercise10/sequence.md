@@ -1,16 +1,27 @@
 ```mermaid
 sequenceDiagram
-    participant C as Client
-    participant IP as ImageProcessor
-    participant PC as PointCloud
+    participant Main
+    participant Console
+    participant Array
 
-    C->>+IP: convertImageToPointCloud(image)
-    IP->>+PC: create
-    PC-->>-IP: return empty PointCloud
-    loop For each pixel in image
-        IP->>IP: Calculate 3D point
-        IP->>PC: Add point to PointCloud
+    Main->>Array: Create array with {10, 20, 30, 40, 50}
+    Main->>Console: Print "Array elements: "
+    loop For each element in array
+        Main->>Array: Get element
+        Main->>Console: Print element
     end
-    IP-->>-C: return PointCloud
+    Main->>Console: Print newline
 
+    Main->>Main: Initialize sum = 0
+    loop For each element in array
+        Main->>Array: Get element
+        alt Element > 30
+            Main->>Main: Add to sum
+        else Element == 30
+            Main->>Console: Print "Found 30 at index i"
+        end
+    end
+
+    Main->>Console: Print "Sum of numbers greater than 30: "
+    Main->>Console: Print sum
 ```
