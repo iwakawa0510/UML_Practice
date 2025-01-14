@@ -1,0 +1,35 @@
+#include <array>
+#include <iostream>
+#include <cstddef>
+
+int main()
+{
+    constexpr std::size_t arraySize = 5U;
+    std::array<int, arraySize> numbers = {10, 20, 30, 40, 50};
+    int sum = 0;
+
+    // 順次実行
+    std::cout << "Array elements: ";
+    for (std::size_t i = 0U; i < arraySize; ++i)
+    {
+        std::cout << numbers[i] << " ";
+    }
+    std::cout << "\n";
+
+    // 繰り返しと条件分岐
+    for (std::size_t i = 0U; i < arraySize; ++i)
+    {
+        if (numbers[i] > 30)
+        {
+            sum += numbers[i];
+        }
+        else if (numbers[i] == 30)
+        {
+            std::cout << "Found 30 at index " << i << "\n";
+        }
+    }
+
+    std::cout << "Sum of numbers greater than 30: " << sum << "\n";
+
+    return 0;
+}
